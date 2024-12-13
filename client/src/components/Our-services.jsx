@@ -45,7 +45,7 @@ function OurServices() {
                                 <div className="iconic-box style-seven">
                                     <div className="text-center d-flex justify-content-center align-items-center">
                                         <div className="icon">
-                                            <i className="fas fa-chart-line"></i>
+                                        {service.icon}
                                         </div>
                                     </div>
                                     <div className="content">

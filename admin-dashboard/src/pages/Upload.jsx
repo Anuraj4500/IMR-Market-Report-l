@@ -9,6 +9,7 @@ const Upload = () => {
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({});
   const [keywords, setKeywords] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false); // {{ edit_1 }}
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -34,11 +35,9 @@ const Upload = () => {
       const currentYear = new Date().getFullYear();
       const fyear = currentYear - 1;
       const ccyy = currentYear + 5;
-      let autoIncrementId = 1;
 
       const generatedData = extractedKeywords.map(keyword => {
         const keywordData = {
-          id: autoIncrementId++,  // Auto-incrementing ID
           keyword,
           slug: createSlug(keyword),
           title: getTitle(keyword, fyear),
@@ -105,10 +104,18 @@ const Upload = () => {
       console.error("No file selected");
       return;
     }
+        
+    setIsSubmitting(true); // {{ edit_2 }}
+
+    if (!file) {
+      console.error("No file selected");
+      setIsSubmitting(false); // {{ edit_3 }}
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("keywordsData", JSON.stringify(formData.keywordsData)); // Append generated data
+    formData.append("keywordsData", JSON.stringify(formData.keywordsData));
 
     try {
       const response = await axios.post("http://localhost:5000/api/adminreports/upload", formData, {
@@ -117,8 +124,14 @@ const Upload = () => {
         },
       });
       console.log("Upload successful:", response.data);
+      
+      // Display alert and redirect
+      alert("Report submitted successfully!");
+      window.location.href = "/upload"; // Redirect to /upload
     } catch (error) {
       console.error("Error uploading file:", error);
+    }finally{
+      setIsSubmitting(false);
     }
   };
 
@@ -176,8 +189,8 @@ const Upload = () => {
                       {/* Submit Button */}
                       <div className="row mt-3">
                         <div className="col-12">
-                          <button type="submit" className="btn btn-success">
-                            Submit Report
+                        <button type="submit" className="btn request-btn" disabled={isSubmitting}>
+                            {isSubmitting ? 'Submitting...' : 'Submit Report'}
                           </button>
                         </div>
                       </div>

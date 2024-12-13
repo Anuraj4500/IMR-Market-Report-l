@@ -106,48 +106,72 @@ const submitSampleRequest = async (req, res) => {
         const userEmailNotification = {
             from: process.env.EMAIL_USER,
             to: req.body.email,
-            subject: 'Thank You for Your Sample Request',
-            html: `
-                <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
-                    <h2 style="color: #f96641; text-align: center;">Thank You, ${req.body.name}!</h2>
-                    <p style="font-size: 16px;">We have received your sample request. Our team will review it and get back to you shortly.</p>
-                    <p style="font-size: 16px;">Here are the details of your submission:</p>
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Name</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.name}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Email</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.email}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Phone</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.phone}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Country</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.country}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Company</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.company}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Designation</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.designation}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; padding: 5px; border: 1px solid #ddd;">Message</td>
-                            <td style="padding: 5px; border: 1px solid #ddd;">${req.body.message || 'N/A'}</td>
-                        </tr>
-                    </table>
-                    <p style="margin-top: 20px; font-size: 14px; color: #555;">
-                        <i>This is an automated message. Please do not reply to this email.</i>
-                    </p>
-                </div>
-            `,
+            subject: `IMR- Sample Report on - ${req.body.reportTitle}`,
+            html: (function() {
+                const isPersonalEmail = /@(gmail|yahoo|hotmail|outlook)\.com$/i.test(req.body.email);
+                if (isPersonalEmail) {
+                    return `
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
+                            <p style="font-size: 16px;">Dear ${req.body.name},</p>
+                            <p style="font-size: 16px;">Greetings from IMR Market Reports!</p>
+                            <p style="font-size: 16px;">
+                                Thank you for requesting the sample report for <strong>${req.body.reportTitle}</strong>.
+                                We have received your request, and our sales representative will get in touch with you soon.
+                            </p>
+                            <p style="font-size: 16px;">
+                                To ensure smooth processing and official communication, kindly share your <b>official work email address</b> for all correspondence to ensure seamless engagement and access to exclusive benefits, along with prioritized support from our sales team. Please be aware that your information is always secure (<a href="https://www.imrmarketreports.com/privacy-policy/" target="_blank">Read more about our privacy policies</a>) with us.
+                            </p>
+                            <p style="font-size: 16px;">
+                                If you require any further assistance or have additional queries, please feel free to contact us at <a href="mailto:sales@imrmarketreports.com">sales@imrmarketreports.com</a>.
+                            </p>
+                            <p style="font-size: 16px; margin-top: 20px;">Thanks and Best Regards,</p>
+                            <p style="font-size: 16px;">
+                                <b>Adlen</b><br>
+                                Strategic Research Partner<br>
+                                Syndicated Market Research Reports | Customized Market Research | Consulting Services<br>
+                               <b>IMR Market Reports</b><br>
+                                Contact: +91-81800-96367<br>
+                                <a href="mailto:sales@imrmarketreports.com">sales@imrmarketreports.com</a> | <a href="https://www.imrmarketreports.com">https://www.imrmarketreports.com</a>
+                            </p>
+                            <p style="font-size: 14px; color: #555;">
+                                <i>This is an automated message. Please do not reply to this email.</i>
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
+                            <p style="font-size: 16px;">Dear ${req.body.name},</p>
+                            <p style="font-size: 16px;">Greetings from IMR Market Reports!</p>
+                            <p style="font-size: 16px;">
+                                Thank you for requesting the sample report for <strong>${req.body.reportTitle}</strong>.
+                                We have successfully received your request, and our sales representative will get in touch with you soon.
+                            </p>
+                            <p style="font-size: 16px;">
+                                In the meantime, if you have any additional thoughts or specific areas you’d like us to cover, don’t hesitate to let us know—we’re here to make this as tailored and relevant to your needs as possible.
+                            </p>
+                            <p style="font-size: 16px;">
+                                If you require any further assistance or have additional queries, please feel free to contact us at <a href="mailto:sales@imrmarketreports.com">sales@imrmarketreports.com</a>.
+                            </p>
+                            <p style="font-size: 16px; margin-top: 20px;">Thanks and Best Regards,</p>
+                            <p style="font-size: 16px;">
+                                <b>Adlen</b><br>
+                                Strategic Research Partner<br>
+                                Syndicated Market Research Reports | Customized Market Research | Consulting Services<br>
+                                <b>IMR Market Reports</b><br>
+                                Contact: +91-81800-96367<br>
+                                <a href="mailto:sales@imrmarketreports.com">sales@imrmarketreports.com</a> | <a href="https://www.imrmarketreports.com">https://www.imrmarketreports.com</a>
+                            </p>
+                            <p style="font-size: 14px; color: #555;">
+                                <i>This is an automated message. Please do not reply to this email.</i>
+                            </p>
+                        </div>
+                    `;
+                }
+            })(),
         };
+        
+        
 
         // Send the confirmation email to the user
         await transporter.sendMail(userEmailNotification);

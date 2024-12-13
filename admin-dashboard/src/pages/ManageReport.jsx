@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "../components/Table";
 import Button from "../components/Button";
-const ManageReport = () => {
-    const [reportsTable, setReportsTable] = useState({ headers: [], rows: [] });
+const ManageReports = () => {
+  return (
+    <div>
+      <div className="d-flex justify-content-between align-items-center mt-5">
+       <h2 className="mt-5" style={{marginLeft: "20%"}}>Manage Reports</h2>
+       <Button text="Add Report" to="/report-add"/>
+       </div>
+      <Table pageType="reports" />
+    </div>
+  );
+};
 
-    return (
-        
-        <div className="" style={{marginTop: "70px"}}>
-            <Button text="Add Report" to="/report-add"/>
-            <Table headers={reportsTable.headers} rows={reportsTable.rows} />
-        </div>
-    );
-}
-
-export default ManageReport;
+export default ManageReports;

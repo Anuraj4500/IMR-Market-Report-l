@@ -97,13 +97,12 @@ const ReportAdd = () => {
     const dataToSend = { ...formData, id: reportId }; // Include the generated ID
 
     try {
-      const response = await axios.post("http://localhost:5000/api/adminreports/create", formData);
-      console.log("Report created:", response.data);
-      // Assuming the response contains the created report with its _id
-      const createdReportId = response.data._id; // Get the auto-incremented ID from the response
-      console.log("Created Report ID:", createdReportId);
+        const response = await axios.post("http://localhost:5000/api/adminreports/create", dataToSend);
+        console.log("Report created:", response.data);
+        alert("Report created successfully!");
     } catch (error) {
-      console.error("Error creating report:", error);
+        console.error("Error creating report:", error.response ? error.response.data : error.message);
+        alert(`Error creating report: ${error.response ? error.response.data.message : error.message}`);
     }
   };
 

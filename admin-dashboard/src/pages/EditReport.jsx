@@ -7,7 +7,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const EditReport = () => {
     const { id } = useParams(); // Get report ID from the URL
-    console.log("Fetching report with ID:", id); // Debugging log
+    const navigate = useNavigate();
 
     const initialFormState = {
         id: id,
@@ -37,7 +37,8 @@ const EditReport = () => {
         const fetchReport = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/adminreports/${id}`);
-                setFormData(response.data);
+                console.log("Fetched report data:", response.data); // Log the fetched data
+                setFormData(response.data); // Ensure this contains title and summary
             } catch (error) {
                 console.error("Error fetching report data:", error);
                 alert("Failed to fetch report data.");
@@ -118,13 +119,19 @@ const EditReport = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!validateForm()) return;
+    console.log("Submitting form data:", formData); // Log formData to check its contents
+
+    // Validate that title and summary are present
+    if (!formData.title || !formData.summary) {
+        alert("Title and summary are required fields.");
+        return;
+    }
 
     setIsLoading(true);
     try {
       const response = await axios.put(
         `http://localhost:5000/api/adminreports/update/${id}`, // Ensure 'id' is being passed here
-        formData
+        formData // Ensure formData contains the updated report data
       );
       console.log("Report updated:", response.data);
       alert("Report updated successfully!");

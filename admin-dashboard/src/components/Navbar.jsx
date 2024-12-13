@@ -81,6 +81,24 @@ function Navbar() {
               <a
                 className="sidebar-link"
                 href="#"
+                id="navbarDropdownLead"
+                role="button"
+                onClick={() => toggleDropdown('lead')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'lead'}
+              >
+                <i className="fas fa-envelope"></i>
+                <h6>Lead</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'lead' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownLead">
+                <li><Link to="/lead">Lead</Link></li>
+              </ul>
+            </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
                 id="navbarDropdownHome"
                 role="button"
                 onClick={() => toggleDropdown('home')}
@@ -93,6 +111,7 @@ function Navbar() {
               <ul className={`sidebar-submenu ${openDropdown === 'home' ? 'active' : 'd-none'}`}
                 aria-labelledby="navbarDropdownHome">
                 <li><Link to="/manage-home">Manage Home</Link></li>
+                <li><Link to="/manage-testimonials">Manage Testimonials</Link></li>
                 <li><Link to="/seo">Home SEO</Link></li>
               </ul>
             </li>
@@ -151,9 +170,123 @@ function Navbar() {
               </a>
               <ul className={`sidebar-submenu ${openDropdown === 'ourservices' ? 'active' : 'd-none'}`}
                 aria-labelledby="navbarDropdownOurServices">
+
                 <li><Link to="/our-servicesadd">Add Our Service</Link></li>
+                <li><Link to="/manage-our-services">Manage Our Services</Link></li>
+                <li><Link to="/edit-our-services/:id">Edit Our Services</Link></li>
               </ul>
             </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownFaq"
+                role="button"
+                onClick={() => toggleDropdown('faq')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'faq'}
+              >
+                <i className="fas fa-question-circle"></i>
+                <h6>FAQ</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'faq' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownFaq">
+                <li><Link to="/manage-faq">Manage FAQ</Link></li>
+                <li><Link to="/faq-seo">FAQ SEO</Link></li>
+              </ul>
+            </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownCareer"
+                role="button"
+                onClick={() => toggleDropdown('career')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'career'}
+              >
+                <i className="fas fa-briefcase"></i>
+                <h6>Career</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'career' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownCareer">
+                <li><Link to="/manage-career">Manage Career</Link></li>
+              </ul>
+            </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownTerms"
+                role="button"
+                onClick={() => toggleDropdown('terms')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'terms'}
+              >
+                <i className="fas fa-file-alt"></i>
+                <h6>Terms</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'terms' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownTerms">
+                <li><Link to="/manage-terms">Manage Terms</Link></li>
+              </ul>
+            </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownOurClients"
+                role="button"
+                onClick={() => toggleDropdown('ourclients')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'ourclients'}
+              >
+                <i className="fas fa-users"></i>
+                <h6>Our Clients</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'ourclients' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownOurClients">
+                <li><Link to="/manage-client">Manage Client</Link></li>
+              </ul>
+            </li>
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownWhychooseus"
+                role="button"
+                onClick={() => toggleDropdown('whychooseus')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'whychooseus'}
+              >
+                <i className="fas fa-star"></i>
+                <h6>Why Choose Us</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'whychooseus' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownWhychooseus">
+                <li><Link to="/manage-whychooseus">Manage Why Choose Us</Link></li>
+              </ul>
+            </li>
+            
+            <li className="sidebar-list">
+              <a
+                className="sidebar-link"
+                href="#"
+                id="navbarDropdownAboutUs"
+                role="button"
+                onClick={() => toggleDropdown('aboutus')}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'aboutus'}
+              >
+                <i className="fas fa-user"></i>
+                <h6>About Us</h6>
+              </a>
+              <ul className={`sidebar-submenu ${openDropdown === 'aboutus' ? 'active' : 'd-none'}`}
+                aria-labelledby="navbarDropdownAboutUs">
+                <li><Link to="/manage-about">Manage About</Link></li>
+              </ul>
+            </li>
+
           </ul>
 
 
