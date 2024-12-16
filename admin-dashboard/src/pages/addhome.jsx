@@ -25,7 +25,7 @@ function HomeAdd() {
         });
 
         try {
-            const response = await fetch("http://localhost:5000/api/home", {
+            const response = await fetch("https://imr-market-report-l.onrender.com/api/home", {
                 method: "POST",
                 body: formData,
             });

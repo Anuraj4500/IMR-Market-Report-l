@@ -3,7 +3,14 @@ import React from 'react';
 const Loading = () => {
     return (
         <div className="row justify-content-center">
-            <div className="loader"></div>
+           
+<div class="loading">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
         </div>
     );
 };

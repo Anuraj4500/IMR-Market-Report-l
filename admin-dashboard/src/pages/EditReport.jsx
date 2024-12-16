@@ -36,7 +36,7 @@ const EditReport = () => {
     useEffect(() => {
         const fetchReport = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/adminreports/${id}`);
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/adminreports/${id}`);
                 console.log("Fetched report data:", response.data); // Log the fetched data
                 setFormData(response.data); // Ensure this contains title and summary
             } catch (error) {
@@ -130,7 +130,7 @@ const EditReport = () => {
     setIsLoading(true);
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/adminreports/update/${id}`, // Ensure 'id' is being passed here
+        `https://imr-market-report-l.onrender.com/api/adminreports/update/${id}`, // Ensure 'id' is being passed here
         formData // Ensure formData contains the updated report data
       );
       console.log("Report updated:", response.data);

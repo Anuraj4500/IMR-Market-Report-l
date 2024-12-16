@@ -34,7 +34,7 @@ function SampleRequest() {
             }
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/reports/slug/${slug}`);
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/slug/${slug}`);
                 if (!response.data) {
                     throw new Error('No data received from server');
                 }
@@ -82,7 +82,7 @@ function SampleRequest() {
 
             console.log("sampleRequestData",sampleRequestData);
             const response = await axios.post(
-                'http://localhost:5000/api/samplerequest',
+                'https://imr-market-report-l.onrender.com/api/samplerequest',
                 sampleRequestData,
                 { headers: { 'Content-Type': 'application/json' } }
             );

@@ -9,7 +9,7 @@ function IndustryCard() {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/category'); // Ensure this matches your route
+        const response = await axios.get('https://imr-market-report-l.onrender.com/api/category'); // Ensure this matches your route
         console.log('Fetched categories:', response.data); // Log the fetched data
         setCategory(response.data);
       } catch (error) {

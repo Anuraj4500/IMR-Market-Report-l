@@ -222,9 +222,8 @@ const submitAskDiscount = async (req, res) => {
         // Send the confirmation email to the user
         await transporter.sendMail(userEmailNotification);
 
-        // Slack notification
         const slackMessage = {
-            text: `*Report ID*: IMR-DIS-${currentID}\n*Report Title*: ${req.body.reportTitle}\n*Name*: ${req.body.name}\n*Email*: ${req.body.email}\n*Phone*: ${req.body.phone}\n*Country*: ${req.body.country}\n*Company*: ${req.body.company}\n*Designation*: ${req.body.designation}\n*Message*: ${req.body.message || 'N/A'}\n*Date*: ${req.body.requestDate}`,
+            text: `IMR-REQ-${currentID}\n\nDear Team,\nWe have a discount request.\nName: ${req.body.name || 'N/A'}\nReport ID: ${req.body.rid || 'N/A'}\nTitle: ${req.body.reportTitle || 'N/A'}\nMessage: ${req.body.message || 'N/A'}\nEmail: ${req.body.email || 'N/A'}\nContact: ${req.body.phone || 'N/A'}\nCountry: ${req.body.country || 'N/A'}\nCompany: ${req.body.company || 'N/A'}\nDesignation: ${req.body.designation || 'N/A'}\nDate: ${req.body.requestDate || 'N/A'}\n\nThanks,\nWebmaster`
         };
 
          // Send Slack message using the webhook URL

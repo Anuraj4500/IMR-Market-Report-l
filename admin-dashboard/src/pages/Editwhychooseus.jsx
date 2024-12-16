@@ -19,7 +19,7 @@ const Editwhychooseus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/adminwhychooseus/${id}`);
+        const response = await axios.get(`https://imr-market-report-l.onrender.com/api/adminwhychooseus/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -84,7 +84,7 @@ const Editwhychooseus = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/adminwhychooseus/update/${id}`, 
+        `https://imr-market-report-l.onrender.com/api/adminwhychooseus/update/${id}`, 
         formDataToSubmit,
         {
           headers: {

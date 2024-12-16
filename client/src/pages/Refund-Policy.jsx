@@ -11,7 +11,7 @@ const RefundPolicy = () => {
   useEffect(() => {
     const fetchRefundPolicy = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/refund-policy'); // Adjust the URL as needed
+            const response = await axios.get('https://imr-market-report-l.onrender.com/api/refund-policy'); // Adjust the URL as needed
             setRefundData(response.data);
         } catch (error) {
             console.error('Error fetching refund policy:', error);

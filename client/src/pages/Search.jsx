@@ -38,14 +38,14 @@ const Search = () => {
                 if (isIdSearch) {
                     console.log(`Fetching report by ID: ${cleanQuery}`);
                     response = await axios.get(
-                        `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/reports/${cleanQuery}`
+                        `${process.env.REACT_APP_API_URL || 'https://imr-market-report-l.onrender.com'}/api/reports/${cleanQuery}`
                     );
                     console.log('Report fetched by ID:', response.data);
                     setReports([response.data]);
                 } else {
                     console.log(`Fetching reports by keyword: ${cleanQuery}`);
                     response = await axios.get(
-                        `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/reports/search`,
+                        `${process.env.REACT_APP_API_URL || 'https://imr-market-report-l.onrender.com'}/api/reports/search`,
                         {
                             params: { query: cleanQuery },
                         }

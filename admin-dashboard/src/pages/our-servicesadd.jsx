@@ -24,7 +24,7 @@ function OurServicesAdd() {
         formData.append("image", image);
 
         try {
-            const response = await fetch("http://localhost:5000/api/ourservices", {
+            const response = await fetch("https://imr-market-report-l.onrender.com/api/ourservices", {
                 method: "POST",
                 body: formData,
             });

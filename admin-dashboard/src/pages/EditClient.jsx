@@ -17,7 +17,7 @@ const EditClient = () => {
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/adminclient/${id}`);
+        const response = await axios.get(`https://imr-market-report-l.onrender.com/api/adminclient/${id}`);
         setFormData({
           id: response.data.id,
           image: "",
@@ -58,7 +58,7 @@ const EditClient = () => {
 
         console.log("Submitting form data:", formDataToSend); // Debugging log
         const response = await axios.put(
-            `http://localhost:5000/api/adminclient/update/${formData.id}`, // Use formData.id
+            `https://imr-market-report-l.onrender.com/api/adminclient/update/${formData.id}`, // Use formData.id
             formDataToSend,
             { headers: { 'Content-Type': 'multipart/form-data' } } // Set the content type
         );

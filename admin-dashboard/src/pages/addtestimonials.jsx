@@ -23,7 +23,7 @@ function AddTestimonials() {
         };
 
         try {
-            const response = await fetch("http://localhost:5000/api/testimonials", {
+            const response = await fetch("https://imr-market-report-l.onrender.com/api/testimonials", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const Healthcare = () => {
         const fetchReports = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/reports/cid`, {
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/cid`, {
                     params: { cid: '9', page: currentPage }
                 });
                 

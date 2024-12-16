@@ -15,7 +15,7 @@ const ManageRegistration = () => {
     const [error, setError] = useState(null);
     const tableRef = useRef(null);
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api/login";
+    const API_URL = process.env.REACT_APP_API_URL || "https://imr-market-report-l.onrender.com/api/login";
 
     // Fetch registration from the API
     const fetchRegistration = async () => {

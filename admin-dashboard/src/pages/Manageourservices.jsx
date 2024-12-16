@@ -17,7 +17,7 @@ const ManageOurServices = () => {
 
     const fetchServices = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/ourservices");
+            const response = await fetch("https://imr-market-report-l.onrender.com/api/ourservices");
             if (!response.ok) {
                 throw new Error("Failed to fetch services");
             }
@@ -59,7 +59,7 @@ const ManageOurServices = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this service?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:5000/api/ourservices/${id}`);
+                await axios.delete(`https://imr-market-report-l.onrender.com/api/ourservices/${id}`);
                 setServices(services.filter((service) => service.id !== id)); // Remove the deleted service from the list
                 alert("Service successfully deleted.");
                 fetchServices();

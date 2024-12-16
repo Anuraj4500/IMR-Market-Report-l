@@ -39,7 +39,7 @@ function Checkout() {
         const fetchReportData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:5000/api/reports/slug/${slug}`);
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/slug/${slug}`);
                 if (response.data) {
                     let price;
                     let userType;
@@ -113,7 +113,7 @@ function Checkout() {
             };
 
             const response = await axios.post(
-                'http://localhost:5000/api/checkout',
+                'https://imr-market-report-l.onrender.com/api/checkout',
                 sampleRequestData,
                 { headers: { 'Content-Type': 'application/json' } }
             );

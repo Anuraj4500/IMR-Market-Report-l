@@ -15,7 +15,7 @@ const ManageTestimonials = () => {
     const [error, setError] = useState(null);
     const tableRef = useRef(null);
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api/testimonials";
+    const API_URL = process.env.REACT_APP_API_URL || "https://imr-market-report-l.onrender.com/api/testimonials";
 
     // Fetch testimonials from the API
     const fetchTestimonials = async () => {

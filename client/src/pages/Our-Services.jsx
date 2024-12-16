@@ -11,7 +11,7 @@ function OurServices() {
     // Function to fetch data from the API
     const fetchOurServices = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/ourservices');
+            const response = await fetch('https://imr-market-report-l.onrender.com/api/ourservices');
             const data = await response.json();
 
             // Check if the data is an array
@@ -105,7 +105,7 @@ function OurServices() {
                                                     <div className="expertise-image">
                                                         <figure className="image-anime">
                                                             <img
-                                                                src={`http://localhost:5000/${service.image}`} // Use the full server URL
+                                                                src={`https://imr-market-report-l.onrender.com/${service.image}`} // Use the full server URL
                                                                 alt={service.title}
                                                                 className="img-fluid"
                                                             />

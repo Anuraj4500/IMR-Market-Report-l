@@ -19,7 +19,7 @@ const Reports = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/category');
+                const response = await axios.get('https://imr-market-report-l.onrender.com/api/category');
                 setCategories(response.data);
             } catch (err) {
                 console.error("Error fetching categories:", err);
@@ -32,7 +32,7 @@ const Reports = () => {
     useEffect(() => {
         const fetchPublishers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/publishers');
+                const response = await axios.get('https://imr-market-report-l.onrender.com/api/publishers');
                 setPublishers(response.data);
             } catch (err) {
                 console.error("Error fetching publishers:", err);
@@ -50,7 +50,7 @@ const Reports = () => {
         const fetchReport = async () => {
             try {
                 console.log("Fetching report with slug:", url);
-                const response = await axios.get(`http://localhost:5000/api/reports/slug/${url}`);
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/slug/${url}`);
                 setReportData(response.data);
                 setLoading(false);
             } catch (err) {

@@ -18,7 +18,7 @@ function UpdateTestimonial() {
         const fetchTestimonialData = async () => {
             console.log("Fetching testimonial with ID:", id);
             try {
-                const response = await fetch(`http://localhost:5000/api/testimonials/${id}`);
+                const response = await fetch(`https://imr-market-report-l.onrender.com/api/testimonials/${id}`);
                 if (!response.ok) {
                     if (response.status === 404) {
                         throw new Error(`Testimonial with ID ${id} not found.`);
@@ -44,7 +44,7 @@ function UpdateTestimonial() {
         e.preventDefault();
         setIsUpdating(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+            const response = await fetch(`https://imr-market-report-l.onrender.com/api/testimonials/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

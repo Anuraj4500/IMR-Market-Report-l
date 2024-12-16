@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
   useEffect(() => {
     const fetchPrivacyPolicy = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/privacypolicy');
+        const response = await axios.get('https://imr-market-report-l.onrender.com/api/privacypolicy');
         setPrivacyData(response.data);
       } catch (error) {
         console.error('Error fetching privacy policy:', error.response ? error.response.data : error.message);

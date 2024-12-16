@@ -26,7 +26,7 @@ function AddTerms() {
         console.log(formData);
 
         try {
-            const response = await fetch("http://localhost:5000/api/terms", {
+            const response = await fetch("https://imr-market-report-l.onrender.com/api/terms", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

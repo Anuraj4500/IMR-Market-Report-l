@@ -13,7 +13,7 @@ const AboutUs = () => {
     useEffect(() => {
         const fetchAboutData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/aboutus');
+                const response = await fetch('https://imr-market-report-l.onrender.com/api/aboutus');
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }

@@ -5,6 +5,7 @@ import ReportCard from '../components/Report-Card';
 import IndustryCard from '../components/Industry-Card';
 import AssistanceCard2 from '../components/AssistanceCard2';
 import Pagination from '../components/Pagination';
+import Loading from '../components/Loading';
 
 const ServiceIndustry = () => {
     const [reports, setReports] = useState([]);
@@ -20,7 +21,7 @@ const ServiceIndustry = () => {
         const fetchReports = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/reports/cid`, {
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/cid`, {
                     params: { cid: '12', page: currentPage }
                 });
                 
@@ -48,9 +49,6 @@ const ServiceIndustry = () => {
         setCurrentPage(newPage);
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div>
@@ -58,7 +56,11 @@ const ServiceIndustry = () => {
 
             <section className="inner-page">
                 <div className="container">
-                    {error ? (
+                    {
+                    loading ? (
+                        <Loading />
+                    ) :
+                    error ? (
                         <div className="alert alert-danger">{error}</div>
                     ) : (
                         <div className="row">

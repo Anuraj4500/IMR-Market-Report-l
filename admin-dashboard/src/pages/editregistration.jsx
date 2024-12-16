@@ -19,7 +19,7 @@ function UpdateRegistration() {
         const fetchRegistrationData = async () => {
             console.log("Fetching registration with ID:", id);
             try {
-                const response = await fetch(`http://localhost:5000/api/login/${id}`);
+                const response = await fetch(`https://imr-market-report-l.onrender.com/api/login/${id}`);
                 if (!response.ok) {
                     if (response.status === 404) {
                         throw new Error(`Registration with ID ${id} not found.`);
@@ -46,7 +46,7 @@ function UpdateRegistration() {
         e.preventDefault();
         setIsUpdating(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/login/${id}`, {
+            const response = await fetch(`https://imr-market-report-l.onrender.com/api/login/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

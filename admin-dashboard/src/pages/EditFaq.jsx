@@ -18,7 +18,7 @@ const EditFaq = () => {
   useEffect(() => {
     const fetchFaq = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/adminfaq/${id}`);
+        const response = await axios.get(`https://imr-market-report-l.onrender.com/api/adminfaq/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching FAQ:", error);
@@ -49,7 +49,7 @@ const EditFaq = () => {
     try {
       console.log("Submitting form data:", formData); // Debugging log
       const response = await axios.put(
-        `http://localhost:5000/api/adminfaq/update/${id}`,
+        `https://imr-market-report-l.onrender.com/api/adminfaq/update/${id}`,
         formData
       );
       console.log("FAQ updated successfully:", response.data); // Debugging log

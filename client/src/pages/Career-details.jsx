@@ -23,7 +23,7 @@ const CareerDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/careerform';
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://imr-market-report-l.onrender.com/api/careerform';
 
     const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name);

@@ -37,7 +37,7 @@ const FaqAdd = () => {
     const dataToSend = { ...formData, id: faqId }; // Include the generated ID
 
     try {
-        const response = await axios.post("http://localhost:5000/api/adminfaq/create", dataToSend);
+        const response = await axios.post("https://imr-market-report-l.onrender.com/api/adminfaq/create", dataToSend);
         console.log("FAQ created:", response.data);
         alert("FAQ created successfully!");
     } catch (error) {

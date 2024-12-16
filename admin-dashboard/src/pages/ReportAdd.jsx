@@ -97,7 +97,7 @@ const ReportAdd = () => {
     const dataToSend = { ...formData, id: reportId }; // Include the generated ID
 
     try {
-        const response = await axios.post("http://localhost:5000/api/adminreports/create", dataToSend);
+        const response = await axios.post("https://imr-market-report-l.onrender.com/api/adminreports/create", dataToSend);
         console.log("Report created:", response.data);
         alert("Report created successfully!");
     } catch (error) {

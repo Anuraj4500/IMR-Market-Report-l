@@ -17,7 +17,7 @@ function UpdateOurService() {
     useEffect(() => {
         const fetchServiceData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/ourservices/${id}`);
+                const response = await fetch(`https://imr-market-report-l.onrender.com/api/ourservices/${id}`);
                 if (!response.ok) throw new Error('Failed to fetch service data');
 
                 const data = await response.json();
@@ -43,7 +43,7 @@ function UpdateOurService() {
         if (image) formData.append('image', image);
 
         try {
-            const response = await fetch(`http://localhost:5000/api/ourservices/${id}`, {
+            const response = await fetch(`https://imr-market-report-l.onrender.com/api/ourservices/${id}`, {
                 method: 'PUT',
                 body: formData, // Send formData
             });

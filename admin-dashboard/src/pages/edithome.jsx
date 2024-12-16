@@ -16,7 +16,7 @@ function UpdateHome() {
     useEffect(() => {
         const fetchHomeData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/home/${id}`);
+                const response = await fetch(`https://imr-market-report-l.onrender.com/api/home/${id}`);
                 if (!response.ok) {
                     if (response.status === 404) {
                         throw new Error(`Home with ID ${id} not found.`);
@@ -48,7 +48,7 @@ function UpdateHome() {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/home/${id}`, {
+            const response = await fetch(`https://imr-market-report-l.onrender.com/api/home/${id}`, {
                 method: 'PUT',
                 body: formData,
             });

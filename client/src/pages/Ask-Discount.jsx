@@ -33,7 +33,7 @@ function AskDiscount() {
             }
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/reports/slug/${slug}`);
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports/slug/${slug}`);
                 if (!response.data) {
                     throw new Error('No data received from server');
                 }
@@ -90,7 +90,7 @@ function AskDiscount() {
             console.log('Sending Discount request data:', discountRequestData);
 
             const response = await axios.post(
-                'http://localhost:5000/api/ask-discount',
+                'https://imr-market-report-l.onrender.com/api/ask-discount',
                 discountRequestData,
                 {
                     headers: {

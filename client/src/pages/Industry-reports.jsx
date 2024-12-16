@@ -20,7 +20,7 @@ const ReportsStore = () => {
     
                 // Fetch the category by slug
                 const categoryResponse = await axios.get(
-                    `http://localhost:5000/api/category?slug=${slug}`
+                    `https://imr-market-report-l.onrender.com/api/category?slug=${slug}`
                 );
                 console.log("Category Response:", categoryResponse.data); // Log the response
     
@@ -34,7 +34,7 @@ const ReportsStore = () => {
     
                 // Fetch reports where cid matches the category id
                 const reportsResponse = await axios.get(
-                    `http://localhost:5000/api/reports?categoryId=${category.id}`
+                    `https://imr-market-report-l.onrender.com/api/reports?categoryId=${category.id}`
                 );
                 const matchedReports = reportsResponse.data;
     

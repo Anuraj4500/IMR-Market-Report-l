@@ -45,7 +45,7 @@ const ClientAdd = () => {
     console.log("Submitting Client with data:", formData);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/adminclient/create", dataToSend, {
+      const response = await axios.post("https://imr-market-report-l.onrender.com/api/adminclient/create", dataToSend, {
         headers: {
           "Content-Type": "multipart/form-data", // Set the content type for file upload
         },

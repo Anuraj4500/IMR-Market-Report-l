@@ -3140,63 +3140,56 @@ section {
     z-index: 10 !important; /* Ensure it stays above other content */ 
 }
 
-/* From Uiverse.io by Shoh2008 */ 
-.loader {
-    width: 16px;
-    height: 16px;
-    position: relative;
-    left: -32px;
-    border-radius: 50%;
-    color: #4F6A7D;
-    background: currentColor;
-    box-shadow: 32px 0 , -32px 0 ,  64px 0;
-  }
-  
-  .loader::after {
-    content: '';
-    position: absolute;
-    left: -32px;
-    top: 0;
-    width: 16px;
-    height: 16px;
-    border-radius: 10px;
-    background: #FF3D00;
-    animation: move_351 3s linear infinite alternate;
-  }
-  
-  @keyframes move_351 {
-    0% , 5% {
-      left: -32px;
-      width: 16px;
+/* Loaders */ 
+.loading {
+    --speed-of-animation: 0.9s;
+    --gap: 6px;
+    --first-color: #4F6A7D;
+    --second-color: #C3EAF6;
+    --third-color: #FC6743;
+    --fourth-color: #fa957c;
+    --fifth-color: #6e8fa7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    gap: 6px;
+    height: 100px;
+   }
+   
+   .loading span {
+    width: 4px;
+    height: 50px;
+    background: var(--first-color);
+    animation: scale var(--speed-of-animation) ease-in-out infinite;
+   }
+   
+   .loading span:nth-child(2) {
+    background: var(--second-color);
+    animation-delay: -0.8s;
+   }
+   
+   .loading span:nth-child(3) {
+    background: var(--third-color);
+    animation-delay: -0.7s;
+   }
+   
+   .loading span:nth-child(4) {
+    background: var(--fourth-color);
+    animation-delay: -0.6s;
+   }
+   
+   .loading span:nth-child(5) {
+    background: var(--fifth-color);
+    animation-delay: -0.5s;
+   }
+   
+   @keyframes scale {
+    0%, 40%, 100% {
+     transform: scaleY(0.05);
     }
-  
-    15% , 20% {
-      left: -32px;
-      width: 48px;
+   
+    20% {
+     transform: scaleY(1);
     }
-  
-    30% , 35% {
-      left: 0px;
-      width: 16px;
-    }
-  
-    45% , 50% {
-      left: 0px;
-      width: 48px;
-    }
-  
-    60% , 65% {
-      left: 32px;
-      width: 16px;
-    }
-  
-    75% , 80% {
-      left: 32px;
-      width: 48px;
-    }
-  
-    95%, 100% {
-      left: 64px;
-      width: 16px;
-    }
-  }
+   }

@@ -11,7 +11,7 @@ const NavMenu = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        const API_URL = process.env.REACT_APP_API_URL || 'https://imr-market-report-l.onrender.com';
         const response = await axios.get(`${API_URL}/api/category`);
         console.log('Fetched categories:', response.data); // Log the fetched data
         setCategory(response.data);

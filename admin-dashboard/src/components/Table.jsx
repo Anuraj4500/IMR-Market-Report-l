@@ -22,7 +22,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminreports/");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminreports/");
         const data = response.data || [];
         setReportsTable({
           headers: ["ID", "Title", "Action"],
@@ -44,7 +44,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchFaqData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminfaq/");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminfaq/");
         const data = response.data || [];
         setFaqTable({
           headers: ["ID", "Question", "Answer", "Action"],
@@ -67,7 +67,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchClientData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminclient/");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminclient/");
         const data = response.data || [];
         setClientTable({
           headers: ["ID", "Image", "Action"],
@@ -89,7 +89,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminabout");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminabout");
         const data = response.data || [];
         setAboutTable({
           headers: ["ID", "Title", "Content", "Action"],
@@ -112,7 +112,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchRequestData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminlead/requests");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminlead/requests");
         const data = response.data || [];
         setRequestTable({
           headers: ["ID", "Name", "Email", "Phone", "Country", "Company", "Report ID", "Request Date", "Action"],
@@ -141,7 +141,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchCheckoutData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminlead/checkouts");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminlead/checkouts");
         const data = response.data || [];
         setCheckoutTable({
           headers: ["ID", "Name", "Email", "Designation", "City", "State", "Country", "Phone",  "Report ID",  "Order Date",  "Action"],
@@ -172,7 +172,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchDiscountData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminlead/discount");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminlead/discount");
         const data = response.data || [];
         setDiscountTable({
           headers: ["ID", "Name", "Email", "Phone", "Country", "Company", "Report ID", "Request Date",  "Action"],
@@ -200,7 +200,7 @@ const Table = ({ pageType }) => {
   useEffect(() => {
     const fetchWhychooseusData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/adminwhychooseus/");
+        const response = await axios.get("https://imr-market-report-l.onrender.com/api/adminwhychooseus/");
         const data = response.data || [];
         setWhychooseusTable({ headers: ["ID", "Title", "Content", "Image", "Action"], rows: data });
       } catch (error) {
@@ -252,49 +252,49 @@ const Table = ({ pageType }) => {
     if (confirmDelete) {
       try {
         if (pageType === "reports") {
-          await axios.delete(`http://localhost:5000/api/adminreports/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminreports/${id}`);
           setReportsTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "faq") {
-          await axios.delete(`http://localhost:5000/api/adminfaq/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminfaq/${id}`);
           setFaqTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "client") {
-          await axios.delete(`http://localhost:5000/api/adminclient/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminclient/${id}`);
           setClientTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "about") {
-          await axios.delete(`http://localhost:5000/api/adminabout/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminabout/${id}`);
           setAboutTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "requests") {
-          await axios.delete(`http://localhost:5000/api/adminlead/requests/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminlead/requests/${id}`);
           setRequestTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "checkouts") {
-          await axios.delete(`http://localhost:5000/api/adminlead/checkouts/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminlead/checkouts/${id}`);
           setCheckoutTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "discounts") {
-          await axios.delete(`http://localhost:5000/api/adminlead/discount/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminlead/discount/${id}`);
           setDiscountTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
           }));
         } else if (pageType === "whychooseus") {
-          await axios.delete(`http://localhost:5000/api/adminwhychooseus/${id}`);
+          await axios.delete(`https://imr-market-report-l.onrender.com/api/adminwhychooseus/${id}`);
           setWhychooseusTable((prevState) => ({
             ...prevState,
             rows: prevState.rows.filter((row) => row.id !== id),
@@ -342,7 +342,7 @@ const Table = ({ pageType }) => {
         ),
         question: row.question || "N/A",
         answer: row.answer || "N/A",
-        image: row.image ? `http://localhost:5000/${row.image}` : "N/A",
+        image: row.image ? `https://imr-market-report-l.onrender.com/${row.image}` : "N/A",
         title1: row.title1 || "N/A",
         content1: row.content1 || "N/A",
       }));

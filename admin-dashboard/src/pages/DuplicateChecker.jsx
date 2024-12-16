@@ -25,7 +25,7 @@ const DuplicateChecker = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/adminreports/check-duplicates", formData, {
+      const response = await axios.post("https://imr-market-report-l.onrender.com/api/adminreports/check-duplicates", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -52,7 +52,7 @@ const DuplicateChecker = () => {
                   <button type="submit" className="btn btn-primary mt-3">Check Duplicates</button>
                 </form>
                 {downloadLink && (
-                  <a href={`http://localhost:5000/${downloadLink}`} download className="btn btn-success mt-3">
+                  <a href={`https://imr-market-report-l.onrender.com/${downloadLink}`} download className="btn btn-success mt-3">
                     Download Non-Duplicate Excel
                   </a>
                 )}

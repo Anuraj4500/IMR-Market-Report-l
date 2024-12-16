@@ -12,7 +12,7 @@ const FAQ = () => {
     const fetchFaqs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/faqs');
+        const response = await axios.get('https://imr-market-report-l.onrender.com/api/faqs');
         setFaqs(response.data);
         setError(null);
       } catch (err) {

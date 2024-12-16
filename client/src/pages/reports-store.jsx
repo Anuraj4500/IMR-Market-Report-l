@@ -22,7 +22,7 @@ const ReportsStore = () => {
         const fetchReports = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/reports`, {
+                const response = await axios.get(`https://imr-market-report-l.onrender.com/api/reports`, {
                     params: { page: currentPage, limit: 10 }
                 });
         

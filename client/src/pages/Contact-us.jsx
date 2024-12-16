@@ -37,7 +37,7 @@ const ContactUs = () => {
     setIsSubmitting(true);
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/contactus';
+      const apiUrl = process.env.REACT_APP_API_URL || 'https://imr-market-report-l.onrender.com/api/contactus';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

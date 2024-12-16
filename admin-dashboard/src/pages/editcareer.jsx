@@ -21,7 +21,7 @@ function UpdateCareer() {
         const fetchCareerData = async () => {
             console.log("Fetching career with ID:", id);
             try {
-                const response = await fetch(`http://localhost:5000/api/career/${id}`);
+                const response = await fetch(`https://imr-market-report-l.onrender.com/api/career/${id}`);
                 if (!response.ok) {
                     if (response.status === 404) {
                         throw new Error(`Career with ID ${id} not found.`);
@@ -50,7 +50,7 @@ function UpdateCareer() {
         e.preventDefault();
         setIsUpdating(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/career/${id}`, {
+            const response = await fetch(`https://imr-market-report-l.onrender.com/api/career/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -118,7 +118,7 @@ const Upload = () => {
     formData.append("keywordsData", JSON.stringify(formData.keywordsData));
 
     try {
-      const response = await axios.post("http://localhost:5000/api/adminreports/upload", formData, {
+      const response = await axios.post("https://imr-market-report-l.onrender.com/api/adminreports/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
