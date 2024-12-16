@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@babel/plugin-transform-optional-chaining": "^7.25.9",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
