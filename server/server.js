@@ -20,6 +20,8 @@ const careerRoutes = require('./routes/careerRoutes');
 const adminReportsRoutes = require('./admin/routes/adminreportsRoutes');
 const adminOurServicesRoutes = require('./admin/routes/adminourservicesRoutes');
 const askDiscountRoutes = require('./routes/askdiscountRoutes');
+const testimonialsRoutes = require('./routes/testimonialRoutes')
+
 const authRoutes = require('./admin/routes/authRoutes');
 const adminTestimonialsRoutes = require('./admin/routes/admintestimonialsRoutes');
 const adminCareerRoutes = require('./admin/routes/admincareerRoutes');
@@ -30,7 +32,7 @@ const adminAboutRoutes = require("./admin/routes/adminAboutRoutes");
 const adminLeadRoutes = require("./admin/routes/adminLeadRoutes");
 const adminWhychooseusRoutes = require("./admin/routes/adminWhychooseusRoutes");
 const adminfaqRoutes = require("./admin/routes/adminfaqRoutes");
-
+const adminRegistrationRoutes = require("./admin/routes/adminregistrationRoutes");
 const app = express();
 
 // Configure AWS SDK
@@ -73,6 +75,8 @@ app.use('/api', careerRoutes);
 app.use('/api/adminreports', adminReportsRoutes);
 app.use('/api', adminOurServicesRoutes);
 app.use('/api/ask-discount', askDiscountRoutes);
+app.use('/api', testimonialsRoutes),
+app.use('/api', adminRegistrationRoutes);
 app.use('/api', authRoutes);
 app.use('/api', adminTestimonialsRoutes);
 app.use('/api', adminCareerRoutes);

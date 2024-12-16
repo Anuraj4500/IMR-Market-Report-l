@@ -11,6 +11,7 @@ function AskDiscount() {
     const [reportData, setReportData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -23,8 +24,6 @@ function AskDiscount() {
         status: 'pending' // Added status field
     });
     const [selectedLicense, setSelectedLicense] = useState('single'); // Default to single user license
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
     useEffect(() => {
         const fetchReportData = async () => {
             if (!slug) {
@@ -79,7 +78,7 @@ function AskDiscount() {
             // Create the complete discount request data object
             const discountRequestData = {
                 ...formData,
-                reportId: reportData.id,
+                rid: reportData.id,
                 reportTitle: reportData.title,
                 slug: reportData.slug,
                 category: reportData.category,
@@ -480,7 +479,7 @@ function AskDiscount() {
                                             className="btn btn-primary request-btn"
                                             disabled={loading}
                                         >
-                                            <i className="bx bx-send"></i>&nbsp;{isSubmitting ? 'Submitting...' : 'Send Discount Request'}
+                                            <i className="bx bx-send"></i>&nbsp;{isSubmitting ? 'Submitting discount request...' : 'Send Discount Request'}
                                         </button>
                                     </div>
                                 </form>

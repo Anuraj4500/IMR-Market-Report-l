@@ -82,7 +82,7 @@ const Reports = () => {
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center">
                         <ol>
-                            <li><a href="https://www.imrmarketreports.com">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li>{category ? category.title : 'Unknown Category'}</li>
                             <li>{reportData.keyword}</li>
                         </ol>

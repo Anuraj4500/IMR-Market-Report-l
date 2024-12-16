@@ -72,10 +72,10 @@ const Footer = () => {
               <div className="social-menu">
                 <span className="text-white">Follow us</span>
                 <ul>
-                  <li><a href="#"><i className="fab fa-facebook"></i></a></li>
-                  <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-                  <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                  <li><a href="#"><i className="fab fa-linkedin"></i></a></li>
+                  <li><Link to="https://www.facebook.com/imrmarketreports" target="_blank"><i className="fab fa-facebook"></i></Link></li>
+                  <li><Link to="#" target="_blank"><i className="fab fa-twitter"></i></Link></li>
+                  <li><Link to="#" target="_blank"><i className="fab fa-instagram"></i></Link></li>
+                  <li><Link to="https://www.linkedin.com/company/imr-market-reports/" target="_blank"><i className="fab fa-linkedin"></i></Link></li>
                 </ul>
               </div>
             </div>

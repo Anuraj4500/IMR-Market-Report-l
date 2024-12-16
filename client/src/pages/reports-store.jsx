@@ -11,7 +11,7 @@ const ReportsStore = () => {
     const [reports, setReports] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
  
     const breadcrumbItems = [
@@ -22,17 +22,16 @@ const ReportsStore = () => {
         const fetchReports = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/reports?page=${page}&limit=10`);
+                const response = await axios.get(`http://localhost:5000/api/reports`, {
+                    params: { page: currentPage, limit: 10 }
+                });
+        
                 console.log("API Response:", response.data);
-
-                if (Array.isArray(response.data)) {
-                    setReports(response.data);
-                } else {
-                    console.warn("Reports data is not in expected format:", response.data);
-                    setReports([]);
-                }
-
-                setTotalPages(response.data.totalPages || 0);
+        
+                // Destructure and set the state correctly
+                const { reports, totalPages } = response.data;
+                setReports(reports || []);
+                setTotalPages(totalPages || 0);
                 setError(null);
             } catch (err) {
                 console.error("Error fetching reports:", err);
@@ -46,10 +45,10 @@ const ReportsStore = () => {
         };
  
         fetchReports();
-    }, [page]);
+    }, [currentPage]);
  
     const handlePageChange = (newPage) => {
-        setPage(newPage);
+        setCurrentPage(newPage);
     };
  
     return (
@@ -66,7 +65,7 @@ const ReportsStore = () => {
                     ) : (
                         <div className="row">
                             <div className="col-lg-9 order-md-2">
-                                <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
+                                <Pagination page={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
                                 {Array.isArray(reports) && reports.length > 0 ? (
                                     reports.map(report => (
                                         <ReportCard key={report.id} {...report} />
@@ -74,7 +73,7 @@ const ReportsStore = () => {
                                 ) : (
                                     <div>No reports available.</div>
                                 )}
-                                <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
+                                <Pagination page={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
                             </div>
                             <div className="col-lg-3 order-md-1">
                                 <IndustryCard />

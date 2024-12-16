@@ -25,7 +25,7 @@ const Login = () => {
             if (response.ok && data.success) {
                 sessionStorage.setItem('isLoggedIn', 'true');
                 login(); // Call your login hook
-                navigate("/lead");
+                navigate("/dashboard");
             } else {
                 alert(data.message || "Invalid credentials!");
             }

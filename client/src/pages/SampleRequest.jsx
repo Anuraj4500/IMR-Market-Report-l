@@ -71,7 +71,7 @@ function SampleRequest() {
         try {
             const sampleRequestData = {
                 ...formData,
-                reportId: reportData._id,
+                rid: reportData.id,
                 reportTitle: reportData.title,
                 slug: reportData.slug,
                 category: reportData.category,
@@ -475,7 +475,7 @@ const updatePhoneCode = (e) => {
                                         className="btn btn-primary request-btn"
                                         disabled={loading}
                                     >
-                                        {isSubmitting ? 'Submitting...' : 'Send Sample Request'}
+                                        {isSubmitting ? 'Submitting sample request...' : 'Send Sample Request'}
                                     </button>
                                 </div>
                             </form>

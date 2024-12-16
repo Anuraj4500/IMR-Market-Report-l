@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { fetchAllPublishers } = require('../controllers/publisherController');
+const { getPublishers } = require('../controllers/publisherController');
 
 // Route to fetch all publishers
-router.get('/', fetchAllPublishers);
+router.get('/', getPublishers);
 
 module.exports = router;

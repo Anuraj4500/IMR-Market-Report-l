@@ -8,6 +8,7 @@ function OurServicesAdd() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [icon, setIcon] = useState("");
+    const [image, setImage] = useState("");
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,6 +21,7 @@ function OurServicesAdd() {
         formData.append("title", title);
         formData.append("desc", desc);
         formData.append("icon", icon);
+        formData.append("image", image);
 
         try {
             const response = await fetch("http://localhost:5000/api/ourservices", {
@@ -37,6 +39,7 @@ function OurServicesAdd() {
                 setTitle("");
                 setDesc("");
                 setIcon("");
+                setImage("");
             } else {
                 const errorData = await response.text();
                 console.error("Error creating service:", errorData);
@@ -116,6 +119,18 @@ function OurServicesAdd() {
                                                             value={desc}
                                                             rows="5"
                                                             onChange={(e) => setDesc(e.target.value)}
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col">
+                                                    <div className="mb-3">
+                                                        <h5 className="f-w-600 mb-2">Image</h5>
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            className="form-control"
+                                                            onChange={(e) => setImage(e.target.files[0])}
                                                             required
                                                         />
                                                     </div>

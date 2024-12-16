@@ -101,11 +101,18 @@ function OurServices() {
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12 mt-4 mt-lg-0">
-                                                <div className="expertise-image">
-                                                    <figure className="image-anime">
-                                                        <img src={aboutus} alt="Expertise" className="img-fluid" />
-                                                    </figure>
+                                                <div className="col-lg-4 col-md-12 mt-4 mt-lg-0">
+                                                    <div className="expertise-image">
+                                                        <figure className="image-anime">
+                                                            <img
+                                                                src={`http://localhost:5000/${service.image}`} // Use the full server URL
+                                                                alt={service.title}
+                                                                className="img-fluid"
+                                                            />
+                                                        </figure>
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>

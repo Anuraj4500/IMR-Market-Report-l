@@ -4,9 +4,10 @@ const Report = require('../models/report');
 
 // GET all reports
 router.get('/reports', async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;
     try {
-        const reports = await Report.getAllReports();
-        res.json(reports);
+        const { reports, totalPages } = await Report.getAllReports(parseInt(page), parseInt(limit));
+        res.json({ reports, totalPages });
     } catch (error) {
         console.error('Error fetching reports:', error);
         res.status(500).json({ message: 'Error fetching reports' });

@@ -41,6 +41,11 @@ import EditWhychooseus from "./pages/Editwhychooseus"; // Fixed casing
 import ManageFaq from "./pages/ManageFaq"; // Fixed casing
 import AddFaq from "./pages/FaqAdd"; // Fixed casing
 import EditFaq from "./pages/EditFaq"; // Fixed casing
+import ManageRegistration from "./pages/manage-registration"; // Fixed casing
+import EditRegistration from "./pages/editregistration"; // Fixed casing
+import AddRegistration from "./pages/addregistration"; // Fixed casing
+import Dashboard from "./pages/dashboard"; // Fixed casing
+
 
 import "./App.css";
 
@@ -77,6 +82,8 @@ const App = () => {
         {/* User Routes */}
         {isLoggedIn ? (
           <>
+          
+            <Route path="/dashboard" element={<UserLayout><Dashboard /></UserLayout>} />
             <Route path="/add-home" element={<UserLayout><HomeAdd /></UserLayout>} />
             <Route path="/edit-home/:id" element={<UserLayout><EditHome /></UserLayout>} />
             <Route path="/manage-our-services" element={<UserLayout><ManageOurServices /></UserLayout>} />
@@ -112,6 +119,9 @@ const App = () => {
             <Route path="/manage-faq" element={<UserLayout><ManageFaq /></UserLayout>} />
             <Route path="/faq-add" element={<UserLayout><AddFaq /></UserLayout>} />
             <Route path="/faq-edit/:id" element={<UserLayout><EditFaq /></UserLayout>} />
+            <Route path="/manage-registration" element={<UserLayout><ManageRegistration /></UserLayout>} />
+            <Route path="/add-registration" element={<UserLayout><AddRegistration /></UserLayout>} />
+            <Route path="/edit-registration/:id" element={<UserLayout><EditRegistration /></UserLayout>} />
           </>
         ) : (
           // Redirect to login if not logged in

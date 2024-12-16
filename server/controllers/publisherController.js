@@ -1,20 +1,19 @@
-const { getAllPublishers } = require('../models/publishers');
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient();
 
-const fetchAllPublishers = async (req, res) => {
-    console.log('Received request for publishers');
-    try {
-        const publishers = await getAllPublishers();
-        if (!publishers || publishers.length === 0) {
-            return res.status(404).json({ message: 'No publishers found' });
-        }
-        console.log('Fetched publishers:', publishers);
-        res.json(publishers);
-    } catch (error) {
-        console.error('Error fetching publishers:', error);
-        res.status(500).json({ message: 'Error fetching publishers' });
-    }
+// Fetch testimonials from DynamoDB
+const getPublishers = async (req, res) => {
+  const params = {
+    TableName: 'publishers',  // Replace with your DynamoDB table name
+  };
+
+  try {
+    const data = await docClient.scan(params).promise();
+    res.status(200).json(data.Items);
+  } catch (error) {
+    console.error('Error fetching publishers:', error);
+    res.status(500).json({ error: 'Unable to fetch publishers' });
+  }
 };
 
-module.exports = {
-    fetchAllPublishers,
-};
+module.exports = { getPublishers };

@@ -4,52 +4,48 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 
 function UpdateOurService() {
-    const { id } = useParams(); // Get the service ID from the URL parameters
+    const { id } = useParams();
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [icon, setIcon] = useState('');
+    const [image, setImage] = useState(null); // State for the image file
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [isUpdating, setIsUpdating] = useState(false);
 
-    // Fetch existing service data when the component mounts
     useEffect(() => {
         const fetchServiceData = async () => {
-            console.log("Fetching service with ID:", id);
             try {
                 const response = await fetch(`http://localhost:5000/api/ourservices/${id}`);
-                if (!response.ok) {
-                    if (response.status === 404) {
-                        throw new Error(`Service with ID ${id} not found.`);
-                    }
-                    throw new Error('Failed to fetch service data');
-                }
+                if (!response.ok) throw new Error('Failed to fetch service data');
+
                 const data = await response.json();
-                console.log("Fetched data:", data); // Log the fetched data
                 setTitle(data.item.title);
                 setDesc(data.item.desc);
                 setIcon(data.item.icon || '');
             } catch (error) {
-                console.error('Error fetching service data:', error);
                 setError(error.message);
-                // Optionally, redirect or show a message to the user
             }
         };
-
         fetchServiceData();
     }, [id]);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
         setIsUpdating(true);
+
+        // Prepare FormData to handle file upload and text data
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('desc', desc);
+        formData.append('icon', icon);
+        if (image) formData.append('image', image);
+
         try {
             const response = await fetch(`http://localhost:5000/api/ourservices/${id}`, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ title, desc, icon }),
+                body: formData, // Send formData
             });
 
             if (response.ok) {
@@ -61,7 +57,6 @@ function UpdateOurService() {
                 setError(errorData.message);
             }
         } catch (error) {
-            console.error('Error updating service:', error);
             setError('Error updating service. Please try again.');
         } finally {
             setIsUpdating(false);
@@ -74,77 +69,46 @@ function UpdateOurService() {
             <div className="page-body-wrapper mt-5">
                 <div className="page-body">
                     <div className="container-fluid">
-                        <div className="page-title">
-                            <div className="row">
-                                <div className="col-sm-6 col-12">
-                                    <h2>Update Our Service</h2>
-                                </div>
-                                <div className="col-sm-6 col-12">
-                                    <ol className="breadcrumb">
-                                        <li className="breadcrumb-item">
-                                            <a href="#">
-                                                <i className="fa fa-home"></i>
-                                            </a>
-                                        </li>
-                                        <li className="breadcrumb-item">Our Services</li>
-                                        <li className="breadcrumb-item active">Update Our Service</li>
-                                    </ol>
-                                </div>
+                        <h2>Update Our Service</h2>
+                        {error && <p className="text-danger">{error}</p>}
+                        {success && <p className="text-success">{success}</p>}
+                        <form onSubmit={handleUpdate} encType="multipart/form-data">
+                            <div className="mb-3">
+                                <label>Title</label>
+                                <input
+                                    className="form-control"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}                                    
+                                />
                             </div>
-                        </div>
-                    </div>
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <div className="form theme-form basic-form">
-                                            {error && <p className="text-danger">{error}</p>}
-                                            {success && <p className="text-success">{success}</p>}
-                                            <form onSubmit={handleUpdate}>
-                                                <div className="col">
-                                                    <div className="mb-3">
-                                                        <h5 className="f-w-600 mb-2">Title</h5>
-                                                        <input className="form-control" type="text" placeholder="Title *" value={title} onChange={(e) => setTitle(e.target.value)} required />
-                                                    </div>
-                                                </div>
-                                                <div className="col">
-                                                    <div className="mb-3">
-                                                        <h5 className="f-w-600 mb-2">Write Fontawesome Icon Name</h5>
-                                                        <input
-                                                            className="form-control"
-                                                            placeholder="Write here"
-                                                            value={icon}
-                                                            
-                                                            onChange={(e) => setIcon(e.target.value)}
-                                                            required
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col">
-                                                    <div className="mb-3">
-                                                        <h5 className="f-w-600 mb-2">Enter Description</h5>
-                                                        <textarea
-                                                            className="form-control"
-                                                            placeholder="Write here"
-                                                            value={desc}
-                                                            rows="5"
-                                                            onChange={(e) => setDesc(e.target.value)}
-                                                            required
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col">
-                                                        <Button text={isUpdating ? 'Updating...' : 'Update'} />
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="mb-3">
+                                <label>Icon</label>
+                                <input
+                                    className="form-control"
+                                    value={icon}
+                                    onChange={(e) => setIcon(e.target.value)}
+                                />
                             </div>
-                        </div>
+                            <div className="mb-3">
+                                <label>Description</label>
+                                <textarea
+                                    className="form-control"
+                                    value={desc}
+                                    onChange={(e) => setDesc(e.target.value)}
+                                    rows="5"
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>Upload Image</label>
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                    accept="image/*"
+                                />
+                            </div>
+                            <Button text={isUpdating ? 'Updating...' : 'Update'} />
+                        </form>
                     </div>
                 </div>
             </div>

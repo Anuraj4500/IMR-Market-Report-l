@@ -3,11 +3,18 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = 'report';
 
 // Fetch all reports
-const getAllReports = async () => {
+const getAllReports = async (page = 1, limit = 10) => {
     const params = { TableName: TABLE_NAME };
+    
     const data = await dynamoDB.scan(params).promise();
-    return data.Items;
+    const startIndex = (page - 1) * limit;
+    const paginatedItems = data.Items.slice(startIndex, startIndex + limit);
+    return {
+        reports: paginatedItems,
+        totalPages: Math.ceil(data.Items.length / limit),
+    };
 };
+
 
 // Fetch reports by cid
 const getReportsByCid = async (cid, page = 1, limit = 10) => {
